@@ -35,7 +35,7 @@ namespace SisRH
 
         private void MostrarErro(string Mensagem)
         {
-            MessageBox.Show(Mensagem, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(Mensagem, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void LimparRespostas()
@@ -60,14 +60,14 @@ namespace SisRH
                 if (!float.TryParse(txtSalarioBruto.Text, out SalarioBruto))
                     throw new Exception("O salário bruto deve ser um número.");
 
+                if (SalarioBruto < 0)
+                    throw new Exception("O salário bruto não pode ser um valor menor do que zero.");
+
                 if (string.IsNullOrEmpty(txtBonus.Text))
                     throw new Exception("O campo bônus não pode estar vazio.");
 
                 if (!float.TryParse(txtBonus.Text, out Bonus))
                     throw new Exception("O bônus deve ser um número.");
-
-                if (SalarioBruto < 0)
-                    throw new Exception("O salário bruto não pode ser um valor menor do que zero.");
 
                 if (Bonus < 0)
                     throw new Exception("O bônus não pode ser um valor menor do que zero.");
@@ -106,14 +106,14 @@ namespace SisRH
                 if (!float.TryParse(txtSalarioBruto.Text, out SalarioBruto))
                     throw new Exception("O salário bruto deve ser um número.");
 
+                if (SalarioBruto < 0)
+                    throw new Exception("Por favor, informar um valor que seja maior que zero para o campo Salário Bruto");
+
                 if (string.IsNullOrEmpty(txtDiasDeFerias.Text))
                     throw new Exception("O campo dias de férias não pode estar vazio.");
 
                 if (!int.TryParse(txtDiasDeFerias.Text, out DiasDeFerias))
                     throw new Exception("O nº dias de férias deve ser um número inteiro.");
-
-                if (SalarioBruto < 0)
-                    throw new Exception("Por favor, informar um valor que seja maior que zero para o campo Salário Bruto");
 
                 if (DiasDeFerias < 10 || DiasDeFerias > 30)
                     throw new Exception("Por favor, informar um valor que seja entre 10 e 30 para o campo Dias de Férias");
@@ -153,14 +153,14 @@ namespace SisRH
                 if (!float.TryParse(txtSalarioBruto.Text, out SalarioBruto))
                     throw new Exception("O salário bruto deve ser um número.");
 
+                if (SalarioBruto < 0)
+                    throw new Exception("Por favor, informar um valor que seja maior que zero para o campo Salário Bruto");
+
                 if (string.IsNullOrEmpty(txtMesesTrabalhados.Text))
                     throw new Exception("O campo meses trabalhados não pode estar vazio.");
 
                 if (!int.TryParse(txtMesesTrabalhados.Text, out MesesDeFerias))
                     throw new Exception("O nº de meses trabalhados deve ser um número inteiro.");
-
-                if (SalarioBruto < 0)
-                    throw new Exception("Por favor, informar um valor que seja maior que zero para o campo Salário Bruto");
 
                 if (MesesDeFerias < 1 && MesesDeFerias > 12)
                     throw new Exception("Por favor, informar um valor que seja entre 1 e 12 para o campo Nº Meses Trabalhado");
