@@ -73,7 +73,7 @@ namespace SisRH
                     throw new Exception("O bônus não pode ser um valor menor do que zero.");
 
                 INSS = RHCalculos.Geral.ObterINSS(SalarioBruto + Bonus);
-                BaseDeCalculo = RHCalculos.Geral.ObterBaseDeCalculo(SalarioBruto+Bonus, INSS);
+                BaseDeCalculo = RHCalculos.Geral.ObterBaseDeCalculo(SalarioBruto + Bonus, INSS);
                 IRRF = RHCalculos.Geral.ObterIRRF(BaseDeCalculo);
 
                 txtINSS.Text = RHCalculos.Geral.FormatarParaReal(INSS);
@@ -81,7 +81,8 @@ namespace SisRH
                 txtIRRF.Text = RHCalculos.Geral.FormatarParaReal(IRRF);
                 txtSalarioLiquido.Text = RHCalculos.Geral.FormatarParaReal(BaseDeCalculo - IRRF);
 
-            } catch(Exception Erro)
+            }
+            catch (Exception Erro)
             {
                 MostrarErro(Erro.Message);
                 btnLimpar_Click(null, null);
@@ -109,7 +110,7 @@ namespace SisRH
                     throw new Exception("O campo dias de férias não pode estar vazio.");
 
                 if (!int.TryParse(txtDiasDeFerias.Text, out DiasDeFerias))
-                    throw new Exception("O nº dias de férias deve ser numérico.");
+                    throw new Exception("O nº dias de férias deve ser um número inteiro.");
 
                 if (SalarioBruto < 0)
                     throw new Exception("Por favor, informar um valor que seja maior que zero para o campo Salário Bruto");
@@ -156,7 +157,7 @@ namespace SisRH
                     throw new Exception("O campo meses trabalhados não pode estar vazio.");
 
                 if (!int.TryParse(txtMesesTrabalhados.Text, out MesesDeFerias))
-                    throw new Exception("O nº de meses trabalhados deve ser numérico.");
+                    throw new Exception("O nº de meses trabalhados deve ser um número inteiro.");
 
                 if (SalarioBruto < 0)
                     throw new Exception("Por favor, informar um valor que seja maior que zero para o campo Salário Bruto");
@@ -238,7 +239,7 @@ namespace SisRH
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             LimparRespostas();
-            switch(Acao)
+            switch (Acao)
             {
                 case 1:
                     CalcularSalarioLiquido();
