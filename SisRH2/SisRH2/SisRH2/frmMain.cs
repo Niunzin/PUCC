@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,8 +31,8 @@ namespace SisRH2
 
             try
             {
-                float SalarioBruto = 0;
-                float Bonus = 0;
+                double SalarioBruto = 0;
+                double Bonus = 0;
                 int MesesTrabalhados = 0;
                 int DiasFerias = 0;
 
@@ -45,12 +45,12 @@ namespace SisRH2
                 if (cbSetor.SelectedIndex == 0)
                     Errors.Add("Você não selecionou o cargo do funcionário.");
 
-                if (!float.TryParse(txtSalario.Text, out SalarioBruto))
+                if (!double.TryParse(txtSalario.Text, out SalarioBruto))
                     Errors.Add("O campo \"Salário Bruto\" precisa ser numérico.");
                 else if (SalarioBruto <= 0)
                     Errors.Add("O campo \"Salário Bruto\" deve ser maior que zero.");
 
-                if (!float.TryParse(txtBonus.Text, out Bonus))
+                if (!double.TryParse(txtBonus.Text, out Bonus))
                     Errors.Add("O campo \"Bônus\" precisa ser numérico.");
                 else if (Bonus <= 0)
                     Errors.Add("O campo \"Bônus\" deve ser maior que zero.");
@@ -87,11 +87,11 @@ namespace SisRH2
                     string.Format("{0:0.00}%", INSS_SalarioBruto.Aliquota),
                     Geral.FormatarParaReal(INSS_SalarioBruto.Contribuicao),
 
-                    Geral.FormatarParaReal(IRRF_SalarioBruto.BaseCalculo),
+                    Geral.FormatarParaReal((double)IRRF_SalarioBruto.BaseCalculo),
                     string.Format("{0:0.00}%", IRRF_SalarioBruto.Aliquota),
                     Geral.FormatarParaReal(IRRF_SalarioBruto.ValorDeduzir),
                     Geral.FormatarParaReal(IRRF_SalarioBruto.Valor),
-                    Geral.FormatarParaReal(IRRF_SalarioBruto.BaseCalculo - IRRF_SalarioBruto.Valor),
+                    Geral.FormatarParaReal((double)IRRF_SalarioBruto.BaseCalculo - IRRF_SalarioBruto.Valor),
                     #endregion
 
                     #region CALCULO FERIAS LIQUIDO
@@ -100,11 +100,11 @@ namespace SisRH2
                     string.Format("{0:0.00}%", INSS_Ferias.Aliquota),
                     Geral.FormatarParaReal(INSS_Ferias.Contribuicao),
 
-                    Geral.FormatarParaReal(IRRF_Ferias.BaseCalculo),
+                    Geral.FormatarParaReal((double)IRRF_Ferias.BaseCalculo),
                     string.Format("{0:0.00}%", IRRF_Ferias.Aliquota),
                     Geral.FormatarParaReal(IRRF_Ferias.ValorDeduzir),
                     Geral.FormatarParaReal(IRRF_Ferias.Valor),
-                    Geral.FormatarParaReal(IRRF_Ferias.BaseCalculo - IRRF_Ferias.Valor),
+                    Geral.FormatarParaReal((double)IRRF_Ferias.BaseCalculo - IRRF_Ferias.Valor),
                     #endregion
 
                     #region CALCULO 13 LIQUIDO
@@ -113,11 +113,11 @@ namespace SisRH2
                     string.Format("{0:0.00}%", INSS_MesesTrabalhados.Aliquota),
                     Geral.FormatarParaReal(INSS_MesesTrabalhados.Contribuicao),
 
-                    Geral.FormatarParaReal(IRRF_MesesTrabalhados.BaseCalculo),
+                    Geral.FormatarParaReal((double)IRRF_MesesTrabalhados.BaseCalculo),
                     string.Format("{0:0.00}%", IRRF_MesesTrabalhados.Aliquota),
                     Geral.FormatarParaReal(IRRF_MesesTrabalhados.ValorDeduzir),
                     Geral.FormatarParaReal(IRRF_MesesTrabalhados.Valor),
-                    Geral.FormatarParaReal(IRRF_MesesTrabalhados.BaseCalculo - IRRF_MesesTrabalhados.Valor)
+                    Geral.FormatarParaReal((double)IRRF_MesesTrabalhados.BaseCalculo - IRRF_MesesTrabalhados.Valor)
                     #endregion
                 ));
             } catch (Exception error)
