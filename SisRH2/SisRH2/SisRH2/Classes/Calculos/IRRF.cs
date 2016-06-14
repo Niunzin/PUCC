@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ namespace SisRH2.Classes.Calculos
 {
     class IRRF
     {
-        public IRRF(float _Bruto, float _INSS, bool Meses = false, float TotalMeses = 0, float inss = 0)
+        public IRRF(double _Bruto, double _INSS, bool Meses = false, double TotalMeses = 0, double inss = 0)
         {
 
             BaseCalculo = _Bruto - _INSS;
@@ -17,41 +17,41 @@ namespace SisRH2.Classes.Calculos
                 BaseCalculo = ((_Bruto * TotalMeses ) / 12) - inss;
 
             if (BaseCalculo < 1903.98) { Aliquota = 0; ValorDeduzir = 0; }
-            else if (BaseCalculo < 2826.65) { Aliquota = (float)7.5; ValorDeduzir = (float)142.80; }
-            else if (BaseCalculo < 3751.05) { Aliquota = 15; ValorDeduzir = (float)354.80; }
-            else if (BaseCalculo < 4664.68) { Aliquota = (float)22.5; ValorDeduzir = (float)636.13; }
-            else { Aliquota = (float)27.5; ValorDeduzir = (float)869.36; }
+            else if (BaseCalculo < 2826.65) { Aliquota = (double)7.5; ValorDeduzir = (double)142.80; }
+            else if (BaseCalculo < 3751.05) { Aliquota = 15; ValorDeduzir = (double)354.80; }
+            else if (BaseCalculo < 4664.68) { Aliquota = (double)22.5; ValorDeduzir = (double)636.13; }
+            else { Aliquota = (double)27.5; ValorDeduzir = (double)869.36; }
 
-            Valor = (BaseCalculo * ((float)Aliquota / 100)) - (float)ValorDeduzir;
+            Valor = ((double)BaseCalculo * ((double)Aliquota / 100)) - (double)ValorDeduzir;
         }
 
-        private float _Aliquota;
+        private double _Aliquota;
 
-        public float Aliquota
+        public double Aliquota
         {
             get { return _Aliquota; }
             set { _Aliquota = value; }
         }
 
-        private float _ValorDeduzir;
+        private double _ValorDeduzir;
 
-        public float ValorDeduzir
+        public double ValorDeduzir
         {
             get { return _ValorDeduzir; }
             set { _ValorDeduzir = value; }
         }
 
-        private float _BaseCalculo;
+        private double _BaseCalculo;
 
-        public float BaseCalculo
+        public double BaseCalculo
         {
             get { return _BaseCalculo; }
             set { _BaseCalculo = value; }
         }
 
-        private float _Valor;
+        private double _Valor;
 
-        public float Valor
+        public double Valor
         {
             get { return _Valor; }
             set { _Valor = value; }
