@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,9 +18,14 @@ namespace SisRH2.Classes
             return Output;
         }
 
-        public static string FormatarParaReal(float Valor)
+        public static double FormatNumber(double Input)
         {
-            return string.Format("{0:R$#,##0.00;(R$#,##0.00)}", Valor);
+            return Math.Floor(Input * 100) / 100;
+        }
+
+        public static string FormatarParaReal(double Valor)
+        {
+            return string.Format("{0:R$#,##0.00;(R$#,##0.00)}", Geral.FormatNumber(Valor));
         }
 
         public static string GetText(params string[] args)
