@@ -10,12 +10,20 @@ namespace SisRH2.Classes.Calculos
     {
         public INSS(double _SalarioBruto, double _Parametro, Tipo _Tipo)
         {
-            if (_Tipo == Tipo.SALARIO_BRUTO)
-                ValorTotalBruto = _SalarioBruto + _Parametro;
-            else if (_Tipo == Tipo.DIAS_FERIAS)
-                ValorTotalBruto = _SalarioBruto * (_Parametro / 30);
-            else if  (_Tipo == Tipo.MESES_TRABALHADOS)
-                ValorTotalBruto = _SalarioBruto * (_Parametro / 12);
+            switch(_Tipo)
+            {
+                case Tipo.SALARIO_BRUTO:
+                    ValorTotalBruto = _SalarioBruto + _Parametro;
+                    break;
+                case Tipo.DIAS_FERIAS:
+                    ValorTotalBruto = _SalarioBruto * (_Parametro / 30);
+                    break;
+                case Tipo.MESES_TRABALHADOS:
+                    ValorTotalBruto = _SalarioBruto * (_Parametro / 12);
+                    break;
+                default:
+                    break;
+            }
 
             if (ValorTotalBruto < 1556.94) Aliquota = 8;
             else if (ValorTotalBruto < 2594.92) Aliquota = 9;
