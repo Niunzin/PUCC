@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ namespace SisRH2.Classes.Calculos
 {
     class INSS
     {
-        public INSS(float _SalarioBruto, float _Parametro, Tipo _Tipo)
+        public INSS(double _SalarioBruto, double _Parametro, Tipo _Tipo)
         {
             if (_Tipo == Tipo.SALARIO_BRUTO)
                 ValorTotalBruto = _SalarioBruto + _Parametro;
@@ -24,7 +24,7 @@ namespace SisRH2.Classes.Calculos
 
             Contribuicao = ValorTotalBruto * (Aliquota / 100);
             if (Contribuicao > 570.88)
-                Contribuicao = (float)570.88;
+                Contribuicao = (double)570.88;
         }
 
         public enum Tipo
@@ -34,25 +34,25 @@ namespace SisRH2.Classes.Calculos
             MESES_TRABALHADOS
         }
 
-        private float _Aliquota;
+        private double _Aliquota;
 
-        public float Aliquota
+        public double Aliquota
         {
             get { return _Aliquota; }
             set { _Aliquota = value; }
         }
 
-        private float _Contribuicao;
+        private double _Contribuicao;
 
-        public float Contribuicao
+        public double Contribuicao
         {
             get { return _Contribuicao; }
             set { _Contribuicao = value; }
         }
 
-        private float _ValorTotalBruto;
+        private double _ValorTotalBruto;
 
-        public float ValorTotalBruto
+        public double ValorTotalBruto
         {
             get { return _ValorTotalBruto; }
             set { _ValorTotalBruto = value; }
