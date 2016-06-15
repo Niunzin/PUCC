@@ -31,7 +31,7 @@ namespace SisRH2.Classes
         public static string GetText(params string[] args)
         {
             string Text = string.Format(
-                "Funcionário: {0}\t\tSetor: {1}\n" +
+                "Funcionário: {0}\tSetor: {1}\n" +
                 "-------------------------------------------------------------------------------------------------------------------------------------------------------------------\n" +
                 "SALÁRIO MENSAL\n" + 
                 "Salário Bruto: {2}\tBônus: {3}\t\tValor Total Bruto: {4}\n"+
