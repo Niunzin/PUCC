@@ -35,12 +35,15 @@ namespace SisRH2
                 double Bonus = 0;
                 int MesesTrabalhados = 0;
                 int DiasFerias = 0;
+                float NomeDoFuncionarioErrado = 0;
 
                 if(string.IsNullOrEmpty(txtFuncionario.Text.Trim()))
                     Errors.Add("Você precisa digitar o nome do funcionário.");
 
-                if (txtFuncionario.Text.Length > 50)
-                    Errors.Add("O nome do funcionário não pode ultrapassar 50 caracteres.");
+                if (float.TryParse(txtFuncionario.Text, out NomeDoFuncionarioErrado))
+                    Errors.Add("O nome do funcionário não pode ser numérico.");
+                else if (txtFuncionario.Text.IndexOfAny("0123456789".ToCharArray()) != -1)
+                    Errors.Add("O nome do funcionário não pode conter números.");
 
                 if (cbSetor.SelectedIndex == 0)
                     Errors.Add("Você não selecionou o cargo do funcionário.");
