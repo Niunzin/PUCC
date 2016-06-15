@@ -27,6 +27,7 @@ namespace SisRH2
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+            // Lista de erros
             List<string> Errors = new List<string>();
 
             try
@@ -72,11 +73,22 @@ namespace SisRH2
                 if(Errors.Count > 0)
                     throw new Exception("");
 
+                // INSS => Salário Líquido
                 INSS INSS_SalarioBruto = new INSS(SalarioBruto, Bonus, INSS.Tipo.SALARIO_BRUTO);
+
+                // INSS => Férias
                 INSS INSS_Ferias = new INSS(SalarioBruto, DiasFerias, INSS.Tipo.DIAS_FERIAS);
+
+                // INSS => 13º
                 INSS INSS_MesesTrabalhados = new INSS(SalarioBruto, MesesTrabalhados, INSS.Tipo.MESES_TRABALHADOS);
+                
+                // IRRF => Salário Líquido
                 IRRF IRRF_SalarioBruto = new IRRF(SalarioBruto + Bonus, INSS_SalarioBruto.Contribuicao);
+                
+                // IRRF => Férias
                 IRRF IRRF_Ferias = new IRRF(SalarioBruto, INSS_Ferias.Contribuicao);
+
+                //IRRF => 13º
                 IRRF IRRF_MesesTrabalhados = new IRRF(SalarioBruto, INSS_MesesTrabalhados.Contribuicao, true, MesesTrabalhados, INSS_MesesTrabalhados.Contribuicao);
 
                 txtRegistro.AppendText(Geral.GetText(
