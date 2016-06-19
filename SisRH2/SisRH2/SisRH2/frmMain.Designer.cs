@@ -30,24 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtFuncionario = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSalario = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtBonus = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtMesesTrabalhados = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.cbSetor = new System.Windows.Forms.ComboBox();
             this.txtDiasDeFerias = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtMesesTrabalhados = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtBonus = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtSalario = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtFuncionario = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtRegistro = new System.Windows.Forms.RichTextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
-            this.cbSetor = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -74,75 +74,40 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados";
             // 
-            // groupBox2
+            // cbSetor
             // 
-            this.groupBox2.Controls.Add(this.txtRegistro);
-            this.groupBox2.Location = new System.Drawing.Point(246, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(526, 395);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Funcionários cadastrados";
+            this.cbSetor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSetor.FormattingEnabled = true;
+            this.cbSetor.Items.AddRange(new object[] {
+            "Escolha um setor",
+            "Administração",
+            "Compras",
+            "Contabilidade",
+            "Produção",
+            "Vendas"});
+            this.cbSetor.Location = new System.Drawing.Point(86, 49);
+            this.cbSetor.Name = "cbSetor";
+            this.cbSetor.Size = new System.Drawing.Size(136, 21);
+            this.cbSetor.TabIndex = 12;
             // 
-            // label1
+            // txtDiasDeFerias
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Funcionário:";
+            this.txtDiasDeFerias.Location = new System.Drawing.Point(86, 163);
+            this.txtDiasDeFerias.MaxLength = 2;
+            this.txtDiasDeFerias.Name = "txtDiasDeFerias";
+            this.txtDiasDeFerias.Size = new System.Drawing.Size(136, 20);
+            this.txtDiasDeFerias.TabIndex = 11;
+            this.txtDiasDeFerias.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDiasDeFerias.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
             // 
-            // txtFuncionario
+            // label6
             // 
-            this.txtFuncionario.Location = new System.Drawing.Point(86, 23);
-            this.txtFuncionario.MaxLength = 50;
-            this.txtFuncionario.Name = "txtFuncionario";
-            this.txtFuncionario.Size = new System.Drawing.Size(136, 20);
-            this.txtFuncionario.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Setor:";
-            // 
-            // txtSalario
-            // 
-            this.txtSalario.Location = new System.Drawing.Point(86, 75);
-            this.txtSalario.Name = "txtSalario";
-            this.txtSalario.Size = new System.Drawing.Size(136, 20);
-            this.txtSalario.TabIndex = 5;
-            this.txtSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Salário Bruto:";
-            // 
-            // txtBonus
-            // 
-            this.txtBonus.Location = new System.Drawing.Point(86, 101);
-            this.txtBonus.Name = "txtBonus";
-            this.txtBonus.Size = new System.Drawing.Size(136, 20);
-            this.txtBonus.TabIndex = 7;
-            this.txtBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 104);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Bônus:";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 166);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Dias de Férias:";
             // 
             // txtMesesTrabalhados
             // 
@@ -152,6 +117,7 @@
             this.txtMesesTrabalhados.Size = new System.Drawing.Size(136, 20);
             this.txtMesesTrabalhados.TabIndex = 9;
             this.txtMesesTrabalhados.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMesesTrabalhados.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
             // 
             // label5
             // 
@@ -162,23 +128,89 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Nº Meses\r\nTrabalhados:";
             // 
-            // txtDiasDeFerias
+            // txtBonus
             // 
-            this.txtDiasDeFerias.Location = new System.Drawing.Point(86, 163);
-            this.txtDiasDeFerias.MaxLength = 2;
-            this.txtDiasDeFerias.Name = "txtDiasDeFerias";
-            this.txtDiasDeFerias.Size = new System.Drawing.Size(136, 20);
-            this.txtDiasDeFerias.TabIndex = 11;
-            this.txtDiasDeFerias.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBonus.Location = new System.Drawing.Point(86, 101);
+            this.txtBonus.Name = "txtBonus";
+            this.txtBonus.Size = new System.Drawing.Size(136, 20);
+            this.txtBonus.TabIndex = 7;
+            this.txtBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBonus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
             // 
-            // label6
+            // label4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 166);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Dias de Férias:";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Bônus:";
+            // 
+            // txtSalario
+            // 
+            this.txtSalario.Location = new System.Drawing.Point(86, 75);
+            this.txtSalario.Name = "txtSalario";
+            this.txtSalario.Size = new System.Drawing.Size(136, 20);
+            this.txtSalario.TabIndex = 5;
+            this.txtSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSalario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 78);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Salário Bruto:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Setor:";
+            // 
+            // txtFuncionario
+            // 
+            this.txtFuncionario.Location = new System.Drawing.Point(86, 23);
+            this.txtFuncionario.MaxLength = 150;
+            this.txtFuncionario.Name = "txtFuncionario";
+            this.txtFuncionario.Size = new System.Drawing.Size(136, 20);
+            this.txtFuncionario.TabIndex = 1;
+            this.txtFuncionario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Funcionário:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtRegistro);
+            this.groupBox2.Location = new System.Drawing.Point(246, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(526, 395);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Funcionários cadastrados";
+            // 
+            // txtRegistro
+            // 
+            this.txtRegistro.BackColor = System.Drawing.Color.White;
+            this.txtRegistro.Location = new System.Drawing.Point(6, 19);
+            this.txtRegistro.Name = "txtRegistro";
+            this.txtRegistro.ReadOnly = true;
+            this.txtRegistro.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.txtRegistro.Size = new System.Drawing.Size(514, 366);
+            this.txtRegistro.TabIndex = 0;
+            this.txtRegistro.Text = "";
             // 
             // groupBox3
             // 
@@ -191,17 +223,6 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ferramentas";
-            // 
-            // txtRegistro
-            // 
-            this.txtRegistro.BackColor = System.Drawing.Color.White;
-            this.txtRegistro.Location = new System.Drawing.Point(6, 19);
-            this.txtRegistro.Name = "txtRegistro";
-            this.txtRegistro.ReadOnly = true;
-            this.txtRegistro.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.txtRegistro.Size = new System.Drawing.Size(514, 366);
-            this.txtRegistro.TabIndex = 0;
-            this.txtRegistro.Text = "";
             // 
             // btnSair
             // 
@@ -241,22 +262,6 @@
             this.btnCadastrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
-            // 
-            // cbSetor
-            // 
-            this.cbSetor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSetor.FormattingEnabled = true;
-            this.cbSetor.Items.AddRange(new object[] {
-            "Escolha um setor",
-            "Administração",
-            "Compras",
-            "Contabilidade",
-            "Produção",
-            "Vendas"});
-            this.cbSetor.Location = new System.Drawing.Point(86, 49);
-            this.cbSetor.Name = "cbSetor";
-            this.cbSetor.Size = new System.Drawing.Size(136, 21);
-            this.cbSetor.TabIndex = 12;
             // 
             // frmMain
             // 

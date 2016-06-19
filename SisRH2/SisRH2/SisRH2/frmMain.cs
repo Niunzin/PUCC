@@ -43,8 +43,8 @@ namespace SisRH2
 
                 if (float.TryParse(txtFuncionario.Text, out NomeDoFuncionarioErrado))
                     Errors.Add("O nome do funcionário não pode ser numérico.");
-                else if (txtFuncionario.Text.IndexOfAny("0123456789".ToCharArray()) != -1)
-                    Errors.Add("O nome do funcionário não pode conter números.");
+                //else if (txtFuncionario.Text.IndexOfAny("0123456789".ToCharArray()) != -1)
+                    //Errors.Add("O nome do funcionário não pode conter números.");
 
                 if (cbSetor.SelectedIndex == 0)
                     Errors.Add("Você não selecionou o cargo do funcionário.");
@@ -142,7 +142,7 @@ namespace SisRH2
                 {
                     btnLimpar_Click(error, null);
                     MessageBox.Show(string.Format("{0}\n\n{1}",
-                        "Por favor, faça as seguintes revisões antes de continuar:", Geral.ErrorListToString(Errors)), "Atenção!" , MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        "Atenção:",Errors.ElementAt(0)), "Atenção!" , MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 } else
                 // Tratamento de erro externo
                 {
@@ -193,6 +193,12 @@ namespace SisRH2
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+                btnCadastrar_Click(sender, null);
         }
     }
 }
