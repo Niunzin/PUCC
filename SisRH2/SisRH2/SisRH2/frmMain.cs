@@ -89,7 +89,7 @@ namespace SisRH2
                 IRRF IRRF_Ferias = new IRRF(SalarioBruto, INSS_Ferias.Contribuicao);
 
                 //IRRF => 13º
-                IRRF IRRF_MesesTrabalhados = new IRRF(SalarioBruto, INSS_MesesTrabalhados.Contribuicao, true, MesesTrabalhados, INSS_MesesTrabalhados.Contribuicao);
+                IRRF IRRF_MesesTrabalhados = new IRRF(SalarioBruto, INSS_MesesTrabalhados.Contribuicao, true, MesesTrabalhados);
 
                 txtRegistro.AppendText(Geral.GetText(
                     txtFuncionario.Text,

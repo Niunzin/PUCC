@@ -25,14 +25,14 @@ namespace SisRH2.Classes.Calculos
                     break;
             }
 
-            if (ValorTotalBruto < 1556.94) Aliquota = 8;
-            else if (ValorTotalBruto < 2594.92) Aliquota = 9;
-            else if (ValorTotalBruto < 5189.82) Aliquota = 11;
+            if (ValorTotalBruto <= 1556.94) Aliquota = 8;
+            else if (ValorTotalBruto <= 2594.92) Aliquota = 9;
+            else if (ValorTotalBruto <= 5189.82) Aliquota = 11;
             else Aliquota = 11;
 
             Contribuicao = ValorTotalBruto * (Aliquota / 100);
             if (Contribuicao > 570.88)
-                Contribuicao = (double)570.88;
+                Contribuicao = 570.88;
         }
 
         public enum Tipo

@@ -8,21 +8,22 @@ namespace SisRH2.Classes.Calculos
 {
     class IRRF
     {
-        public IRRF(double _Bruto, double _INSS, bool Meses = false, double TotalMeses = 0, double inss = 0)
+        public IRRF(double _Bruto, double _INSS, bool Meses = false, double TotalMeses = 0)
         {
 
-            BaseCalculo = _Bruto - _INSS;
-
             if (Meses)
-                BaseCalculo = ((_Bruto * TotalMeses ) / 12) - inss;
+                BaseCalculo = ((_Bruto * TotalMeses) / 12) - _INSS;
+            else
+                BaseCalculo = _Bruto - _INSS;
 
-            if (BaseCalculo < 1903.98) { Aliquota = 0; ValorDeduzir = 0; }
-            else if (BaseCalculo < 2826.65) { Aliquota = (double)7.5; ValorDeduzir = (double)142.80; }
-            else if (BaseCalculo < 3751.05) { Aliquota = 15; ValorDeduzir = (double)354.80; }
-            else if (BaseCalculo < 4664.68) { Aliquota = (double)22.5; ValorDeduzir = (double)636.13; }
-            else { Aliquota = (double)27.5; ValorDeduzir = (double)869.36; }
 
-            Valor = ((double)BaseCalculo * ((double)Aliquota / 100)) - (double)ValorDeduzir;
+            if (BaseCalculo <= 1903.98) { Aliquota = 0; ValorDeduzir = 0; }
+            else if (BaseCalculo <= 2826.65) { Aliquota = 7.5; ValorDeduzir = 142.80; }
+            else if (BaseCalculo <= 3751.05) { Aliquota = 15; ValorDeduzir = 354.80; }
+            else if (BaseCalculo <= 4664.68) { Aliquota = 22.5; ValorDeduzir = 636.13; }
+            else { Aliquota = 27.5; ValorDeduzir = 869.36; }
+
+            Valor = (BaseCalculo * (Aliquota / 100)) - ValorDeduzir;
         }
 
         private double _Aliquota;
