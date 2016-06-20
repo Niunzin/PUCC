@@ -102,11 +102,11 @@ namespace SisRH2
                     string.Format("{0:0.00}%", INSS_SalarioBruto.Aliquota),
                     Geral.FormatarParaReal(INSS_SalarioBruto.Contribuicao),
 
-                    Geral.FormatarParaReal((double)IRRF_SalarioBruto.BaseCalculo),
+                    Geral.FormatarParaReal(IRRF_SalarioBruto.BaseCalculo),
                     string.Format("{0:0.00}%", IRRF_SalarioBruto.Aliquota),
                     Geral.FormatarParaReal(IRRF_SalarioBruto.ValorDeduzir),
                     Geral.FormatarParaReal(IRRF_SalarioBruto.Valor),
-                    Geral.FormatarParaReal((double)IRRF_SalarioBruto.BaseCalculo - IRRF_SalarioBruto.Valor),
+                    Geral.FormatarParaReal(IRRF_SalarioBruto.BaseCalculo - IRRF_SalarioBruto.Valor),
                     #endregion
 
                     #region CALCULO FERIAS LIQUIDO
@@ -115,11 +115,11 @@ namespace SisRH2
                     string.Format("{0:0.00}%", INSS_Ferias.Aliquota),
                     Geral.FormatarParaReal(INSS_Ferias.Contribuicao),
 
-                    Geral.FormatarParaReal((double)IRRF_Ferias.BaseCalculo),
+                    Geral.FormatarParaReal(IRRF_Ferias.BaseCalculo),
                     string.Format("{0:0.00}%", IRRF_Ferias.Aliquota),
                     Geral.FormatarParaReal(IRRF_Ferias.ValorDeduzir),
                     Geral.FormatarParaReal(IRRF_Ferias.Valor),
-                    Geral.FormatarParaReal((double)IRRF_Ferias.BaseCalculo - IRRF_Ferias.Valor),
+                    Geral.FormatarParaReal(IRRF_Ferias.BaseCalculo - IRRF_Ferias.Valor),
                     #endregion
 
                     #region CALCULO 13 LIQUIDO
@@ -128,11 +128,11 @@ namespace SisRH2
                     string.Format("{0:0.00}%", INSS_MesesTrabalhados.Aliquota),
                     Geral.FormatarParaReal(INSS_MesesTrabalhados.Contribuicao),
 
-                    Geral.FormatarParaReal((double)IRRF_MesesTrabalhados.BaseCalculo),
+                    Geral.FormatarParaReal(IRRF_MesesTrabalhados.BaseCalculo),
                     string.Format("{0:0.00}%", IRRF_MesesTrabalhados.Aliquota),
                     Geral.FormatarParaReal(IRRF_MesesTrabalhados.ValorDeduzir),
                     Geral.FormatarParaReal(IRRF_MesesTrabalhados.Valor),
-                    Geral.FormatarParaReal((double)IRRF_MesesTrabalhados.BaseCalculo - IRRF_MesesTrabalhados.Valor)
+                    Geral.FormatarParaReal(IRRF_MesesTrabalhados.BaseCalculo - IRRF_MesesTrabalhados.Valor)
                     #endregion
                 ));
             } catch (Exception error)
