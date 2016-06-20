@@ -22,7 +22,6 @@ namespace SisRH2.Classes.Calculos
                     ValorTotalBruto = _SalarioBruto * (_Parametro / 12);
                     break;
                 default:
-                    ValorTotalBruto = 0; // ?
                     break;
             }
 
@@ -58,7 +57,7 @@ namespace SisRH2.Classes.Calculos
             get { return _Contribuicao; }
             set { _Contribuicao = value; }
         }
-
+            
         private double _ValorTotalBruto;
 
         public double ValorTotalBruto
