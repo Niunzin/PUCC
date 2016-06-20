@@ -17,11 +17,31 @@ namespace SisRH2.Classes.Calculos
                 BaseCalculo = _Bruto - _INSS;
 
 
-            if (BaseCalculo <= 1903.98) { Aliquota = 0; ValorDeduzir = 0; }
-            else if (BaseCalculo <= 2826.65) { Aliquota = 7.5; ValorDeduzir = 142.80; }
-            else if (BaseCalculo <= 3751.05) { Aliquota = 15; ValorDeduzir = 354.80; }
-            else if (BaseCalculo <= 4664.68) { Aliquota = 22.5; ValorDeduzir = 636.13; }
-            else { Aliquota = 27.5; ValorDeduzir = 869.36; }
+            if (BaseCalculo <= 1903.98)
+            {
+                Aliquota = 0;
+                ValorDeduzir = 0;
+            }
+            else if (BaseCalculo <= 2826.65)
+            {
+                Aliquota = 7.5;
+                ValorDeduzir = 142.80;
+            }
+            else if (BaseCalculo <= 3751.05)
+            {
+                Aliquota = 15;
+                ValorDeduzir = 354.80;
+            }
+            else if (BaseCalculo <= 4664.68)
+            {
+                Aliquota = 22.5;
+                ValorDeduzir = 636.13;
+            }
+            else
+            {
+                Aliquota = 27.5;
+                ValorDeduzir = 869.36;
+            }
 
             Valor = (BaseCalculo * (Aliquota / 100)) - ValorDeduzir;
         }
