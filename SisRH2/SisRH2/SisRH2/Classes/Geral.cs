@@ -25,7 +25,7 @@ namespace SisRH2.Classes
 
         public static string FormatarParaReal(double Valor)
         {
-            return string.Format("{0:R$#,##0.00;(R$#,##0.00)}", Geral.FormatNumber(Valor));
+            return string.Format("{0:R$#,##0.00;(R$#,##0.00)}", Valor);
         }
 
         public static string GetText(params string[] args)
