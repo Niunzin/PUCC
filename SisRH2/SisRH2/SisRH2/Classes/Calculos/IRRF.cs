@@ -8,14 +8,9 @@ namespace SisRH2.Classes.Calculos
 {
     class IRRF
     {
-        public IRRF(double _Bruto, double _INSS, bool Meses = false, double TotalMeses = 0)
+        public IRRF(double _Bruto, double _INSS)
         {
-
-            if (Meses)
-                BaseCalculo = ((_Bruto * TotalMeses) / 12) - _INSS;
-            else
-                BaseCalculo = _Bruto - _INSS;
-
+            BaseCalculo = _Bruto - _INSS;
 
             if (BaseCalculo <= 1903.98)
             {
