@@ -50,22 +50,22 @@ namespace SisRH2
                     Errors.Add("Você não selecionou o cargo do funcionário.");
 
                 if (!double.TryParse(txtSalario.Text, out SalarioBruto))
-                    Errors.Add("O campo \"Salário Bruto\" precisa ser numérico.");
+                    Errors.Add("O campo \"Salário Bruto\" precisa ser numérico e positivo.");
                 else if (SalarioBruto <= 0)
                     Errors.Add("O campo \"Salário Bruto\" deve ser maior que zero.");
 
                 if (!double.TryParse(txtBonus.Text, out Bonus))
-                    Errors.Add("O campo \"Bônus\" precisa ser numérico.");
+                    Errors.Add("O campo \"Bônus\" precisa ser numérico e positivo.");
                 else if (Bonus <= 0)
                     Errors.Add("O campo \"Bônus\" deve ser maior que zero.");
 
                 if (!int.TryParse(txtMesesTrabalhados.Text, out MesesTrabalhados))
-                    Errors.Add("O campo \"Nº Meses Trabalhados\" precisa ser numérico.");
+                    Errors.Add("O campo \"Nº Meses Trabalhados\" precisa ser numérico e entre 1 e 12.");
                 else if (MesesTrabalhados < 1 || MesesTrabalhados > 12)
                     Errors.Add("Por favor, informar um valor que seja entre 1 e 12 para o campo \"Nº Meses Trabalhado\".");
 
                 if (!int.TryParse(txtDiasDeFerias.Text, out DiasFerias))
-                    Errors.Add("O campo \"Dias de Férias\" precisa ser numérico.");
+                    Errors.Add("O campo \"Dias de Férias\" precisa ser numérico e entre 10 e 30.");
                 else if (DiasFerias < 10 || DiasFerias > 30)
                     Errors.Add("Por favor, informar um valor que seja entre 10 e 30 para o campo \"Dias de Férias\".");
 
@@ -83,13 +83,13 @@ namespace SisRH2
                 INSS INSS_MesesTrabalhados = new INSS(SalarioBruto, MesesTrabalhados, INSS.Tipo.MESES_TRABALHADOS);
                 
                 // IRRF => Salário Líquido
-                IRRF IRRF_SalarioBruto = new IRRF(SalarioBruto + Bonus, INSS_SalarioBruto.Contribuicao);
+                IRRF IRRF_SalarioBruto = new IRRF(INSS_SalarioBruto.ValorTotalBruto, INSS_SalarioBruto.Contribuicao);
                 
                 // IRRF => Férias
-                IRRF IRRF_Ferias = new IRRF(SalarioBruto, INSS_Ferias.Contribuicao);
+                IRRF IRRF_Ferias = new IRRF(INSS_Ferias.ValorTotalBruto, INSS_Ferias.Contribuicao);
 
                 //IRRF => 13º
-                IRRF IRRF_MesesTrabalhados = new IRRF(SalarioBruto, INSS_MesesTrabalhados.Contribuicao, true, MesesTrabalhados);
+                IRRF IRRF_MesesTrabalhados = new IRRF(INSS_MesesTrabalhados.ValorTotalBruto, INSS_MesesTrabalhados.Contribuicao);
 
                 txtRegistro.AppendText(Geral.GetText(
                     txtFuncionario.Text,
