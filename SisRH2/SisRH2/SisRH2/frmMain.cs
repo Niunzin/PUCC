@@ -32,8 +32,8 @@ namespace SisRH2
 
             try
             {
-                double SalarioBruto = 0;
-                double Bonus = 0;
+                decimal SalarioBruto = 0;
+                decimal Bonus = 0;
                 int MesesTrabalhados = 0;
                 int DiasFerias = 0;
                 float NomeDoFuncionarioErrado = 0;
@@ -49,12 +49,12 @@ namespace SisRH2
                 if (cbSetor.SelectedIndex == 0)
                     Errors.Add("Você não selecionou o cargo do funcionário.");
 
-                if (!double.TryParse(txtSalario.Text, out SalarioBruto))
+                if (!decimal.TryParse(txtSalario.Text, out SalarioBruto))
                     Errors.Add("O campo \"Salário Bruto\" precisa ser numérico e positivo.");
                 else if (SalarioBruto <= 0)
                     Errors.Add("O campo \"Salário Bruto\" deve ser maior que zero.");
 
-                if (!double.TryParse(txtBonus.Text, out Bonus))
+                if (!decimal.TryParse(txtBonus.Text, out Bonus))
                     Errors.Add("O campo \"Bônus\" precisa ser numérico e positivo.");
                 else if (Bonus <= 0)
                     Errors.Add("O campo \"Bônus\" deve ser maior que zero.");
@@ -73,6 +73,9 @@ namespace SisRH2
                 if(Errors.Count > 0)
                     throw new Exception("");
 
+                SalarioBruto = Geral.FormatNumber(SalarioBruto);
+                Bonus = Geral.FormatNumber(Bonus);
+
                 // INSS => Salário Líquido
                 INSS INSS_SalarioBruto = new INSS(SalarioBruto, Bonus, INSS.Tipo.SALARIO_BRUTO);
 
@@ -90,6 +93,7 @@ namespace SisRH2
 
                 //IRRF => 13º
                 IRRF IRRF_MesesTrabalhados = new IRRF(INSS_MesesTrabalhados.ValorTotalBruto, INSS_MesesTrabalhados.Contribuicao);
+
 
                 txtRegistro.AppendText(Geral.GetText(
                     txtFuncionario.Text,
@@ -199,6 +203,36 @@ namespace SisRH2
         {
             if (e.KeyCode == Keys.Return)
                 btnCadastrar_Click(sender, null);
+        }
+
+        private void txtBox_Leave(object sender, EventArgs e)
+        {
+            if (!(sender is TextBox)) return;
+            TextBox txtBox = (TextBox)sender;
+
+            if (txtBox.Text.Contains("R$"))
+                txtBox.Text = txtBox.Text.Replace("R$", "").Trim();
+        }
+
+        private void txtBox_Clear(object sender, KeyPressEventArgs e)
+        {
+            if (!(sender is TextBox)) return;
+            TextBox txtBox = (TextBox)sender;
+
+            switch (e.KeyChar)
+            {
+                case '0': e.Handled = false; break;
+                case '1': e.Handled = false; break;
+                case '2': e.Handled = false; break;
+                case '3': e.Handled = false; break;
+                case '4': e.Handled = false; break;
+                case '5': e.Handled = false; break;
+                case '6': e.Handled = false; break;
+                case '7': e.Handled = false; break;
+                case '8': e.Handled = false; break;
+                case '9': e.Handled = false; break;
+                default: e.Handled = true; break;
+            }
         }
     }
 }

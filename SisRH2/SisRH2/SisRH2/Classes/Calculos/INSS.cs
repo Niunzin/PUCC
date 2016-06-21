@@ -8,31 +8,32 @@ namespace SisRH2.Classes.Calculos
 {
     class INSS
     {
-        public INSS(double _SalarioBruto, double _Parametro, Tipo _Tipo)
+        public INSS(decimal _SalarioBruto, decimal _Parametro, Tipo _Tipo)
         {
             switch(_Tipo)
             {
                 case Tipo.SALARIO_BRUTO:
-                    ValorTotalBruto = _SalarioBruto + _Parametro;
+                    ValorTotalBruto = Geral.FormatNumber(_SalarioBruto + _Parametro);
                     break;
                 case Tipo.DIAS_FERIAS:
-                    ValorTotalBruto = _SalarioBruto * (_Parametro / 30);
+                    ValorTotalBruto = Geral.FormatNumber(_SalarioBruto * _Parametro / 30);
                     break;
                 case Tipo.MESES_TRABALHADOS:
-                    ValorTotalBruto = _SalarioBruto * (_Parametro / 12);
+                    ValorTotalBruto = Geral.FormatNumber(_SalarioBruto * _Parametro / 12);
                     break;
                 default:
                     break;
             }
 
-            if (ValorTotalBruto <= 1556.94) Aliquota = 8;
-            else if (ValorTotalBruto <= 2594.92) Aliquota = 9;
-            else if (ValorTotalBruto <= 5189.82) Aliquota = 11;
+            if (ValorTotalBruto <= (decimal)1556.94) Aliquota = 8;
+            else if (ValorTotalBruto <= (decimal)2594.92) Aliquota = 9;
+            else if (ValorTotalBruto <= (decimal)5189.82) Aliquota = 11;
             else Aliquota = 11;
 
-            Contribuicao = ValorTotalBruto * (Aliquota / 100);
-            if (Contribuicao > 570.88)
-                Contribuicao = 570.88;
+            Contribuicao = Geral.FormatNumber(ValorTotalBruto * (Aliquota / (decimal)100));
+
+            if (Contribuicao > (decimal)570.88)
+                Contribuicao = (decimal)570.88;
         }
 
         public enum Tipo
@@ -42,25 +43,25 @@ namespace SisRH2.Classes.Calculos
             MESES_TRABALHADOS
         }
 
-        private double _Aliquota;
+        private decimal _Aliquota;
 
-        public double Aliquota
+        public decimal Aliquota
         {
             get { return _Aliquota; }
             set { _Aliquota = value; }
         }
 
-        private double _Contribuicao;
+        private decimal _Contribuicao;
 
-        public double Contribuicao
+        public decimal Contribuicao
         {
             get { return _Contribuicao; }
             set { _Contribuicao = value; }
         }
             
-        private double _ValorTotalBruto;
+        private decimal _ValorTotalBruto;
 
-        public double ValorTotalBruto
+        public decimal ValorTotalBruto
         {
             get { return _ValorTotalBruto; }
             set { _ValorTotalBruto = value; }

@@ -18,14 +18,15 @@ namespace SisRH2.Classes
             return Output;
         }
 
-        public static double FormatNumber(double Input)
+        public static decimal FormatNumber(decimal Input)
         {
-            return Math.Floor(Input * 100) / 100;
+            var f = Math.Pow(10, 2);
+            return Math.Truncate(Input * (decimal)f) / (decimal)f;
         }
 
-        public static string FormatarParaReal(double Valor)
+        public static string FormatarParaReal(decimal Valor)
         {
-            return string.Format("{0:R$#,##0.00;(R$#,##0.00)}", Valor);
+            return string.Format("{0:R$#,##0.00;(R$#,##0.00)}", Geral.FormatNumber(Valor));
         }
 
         public static string GetText(params string[] args)

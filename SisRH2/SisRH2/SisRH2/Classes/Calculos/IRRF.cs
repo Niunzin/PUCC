@@ -8,66 +8,66 @@ namespace SisRH2.Classes.Calculos
 {
     class IRRF
     {
-        public IRRF(double _Bruto, double _INSS)
+        public IRRF(decimal _Bruto, decimal _INSS)
         {
             BaseCalculo = _Bruto - _INSS;
 
-            if (BaseCalculo <= 1903.98)
+            if (BaseCalculo <= (decimal)1903.98)
             {
                 Aliquota = 0;
                 ValorDeduzir = 0;
             }
-            else if (BaseCalculo <= 2826.65)
+            else if (BaseCalculo <= (decimal)2826.65)
             {
-                Aliquota = 7.5;
-                ValorDeduzir = 142.80;
+                Aliquota = (decimal)7.5;
+                ValorDeduzir = (decimal)142.80;
             }
-            else if (BaseCalculo <= 3751.05)
+            else if (BaseCalculo <= (decimal)3751.05)
             {
                 Aliquota = 15;
-                ValorDeduzir = 354.80;
+                ValorDeduzir = (decimal)354.80;
             }
-            else if (BaseCalculo <= 4664.68)
+            else if (BaseCalculo <= (decimal)4664.68)
             {
-                Aliquota = 22.5;
-                ValorDeduzir = 636.13;
+                Aliquota = (decimal)22.5;
+                ValorDeduzir = (decimal)636.13;
             }
             else
             {
-                Aliquota = 27.5;
-                ValorDeduzir = 869.36;
+                Aliquota = (decimal)27.5;
+                ValorDeduzir = (decimal)869.36;
             }
 
-            Valor = (BaseCalculo * (Aliquota / 100)) - ValorDeduzir;
+            Valor = Geral.FormatNumber((BaseCalculo * (Aliquota / 100)) - ValorDeduzir);
         }
 
-        private double _Aliquota;
+        private decimal _Aliquota;
 
-        public double Aliquota
+        public decimal Aliquota
         {
             get { return _Aliquota; }
             set { _Aliquota = value; }
         }
 
-        private double _ValorDeduzir;
+        private decimal _ValorDeduzir;
 
-        public double ValorDeduzir
+        public decimal ValorDeduzir
         {
             get { return _ValorDeduzir; }
             set { _ValorDeduzir = value; }
         }
 
-        private double _BaseCalculo;
+        private decimal _BaseCalculo;
 
-        public double BaseCalculo
+        public decimal BaseCalculo
         {
             get { return _BaseCalculo; }
             set { _BaseCalculo = value; }
         }
 
-        private double _Valor;
+        private decimal _Valor;
 
-        public double Valor
+        public decimal Valor
         {
             get { return _Valor; }
             set { _Valor = value; }

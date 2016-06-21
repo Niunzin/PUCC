@@ -31,9 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbSetor = new System.Windows.Forms.ComboBox();
-            this.txtDiasDeFerias = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtMesesTrabalhados = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBonus = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,6 +46,8 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
+            this.txtMesesTrabalhados = new System.Windows.Forms.TextBox();
+            this.txtDiasDeFerias = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -55,10 +55,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbSetor);
             this.groupBox1.Controls.Add(this.txtDiasDeFerias);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtMesesTrabalhados);
+            this.groupBox1.Controls.Add(this.cbSetor);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtBonus);
             this.groupBox1.Controls.Add(this.label4);
@@ -88,17 +88,7 @@
             this.cbSetor.Location = new System.Drawing.Point(86, 49);
             this.cbSetor.Name = "cbSetor";
             this.cbSetor.Size = new System.Drawing.Size(136, 21);
-            this.cbSetor.TabIndex = 12;
-            // 
-            // txtDiasDeFerias
-            // 
-            this.txtDiasDeFerias.Location = new System.Drawing.Point(86, 163);
-            this.txtDiasDeFerias.MaxLength = 2;
-            this.txtDiasDeFerias.Name = "txtDiasDeFerias";
-            this.txtDiasDeFerias.Size = new System.Drawing.Size(136, 20);
-            this.txtDiasDeFerias.TabIndex = 11;
-            this.txtDiasDeFerias.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDiasDeFerias.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
+            this.cbSetor.TabIndex = 2;
             // 
             // label6
             // 
@@ -108,16 +98,6 @@
             this.label6.Size = new System.Drawing.Size(77, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Dias de Férias:";
-            // 
-            // txtMesesTrabalhados
-            // 
-            this.txtMesesTrabalhados.Location = new System.Drawing.Point(86, 127);
-            this.txtMesesTrabalhados.MaxLength = 2;
-            this.txtMesesTrabalhados.Name = "txtMesesTrabalhados";
-            this.txtMesesTrabalhados.Size = new System.Drawing.Size(136, 20);
-            this.txtMesesTrabalhados.TabIndex = 9;
-            this.txtMesesTrabalhados.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtMesesTrabalhados.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
             // 
             // label5
             // 
@@ -133,9 +113,10 @@
             this.txtBonus.Location = new System.Drawing.Point(86, 101);
             this.txtBonus.Name = "txtBonus";
             this.txtBonus.Size = new System.Drawing.Size(136, 20);
-            this.txtBonus.TabIndex = 7;
+            this.txtBonus.TabIndex = 4;
             this.txtBonus.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBonus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
+            this.txtBonus.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // label4
             // 
@@ -151,9 +132,10 @@
             this.txtSalario.Location = new System.Drawing.Point(86, 75);
             this.txtSalario.Name = "txtSalario";
             this.txtSalario.Size = new System.Drawing.Size(136, 20);
-            this.txtSalario.TabIndex = 5;
+            this.txtSalario.TabIndex = 3;
             this.txtSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSalario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
+            this.txtSalario.Leave += new System.EventHandler(this.txtBox_Leave);
             // 
             // label3
             // 
@@ -209,7 +191,7 @@
             this.txtRegistro.ReadOnly = true;
             this.txtRegistro.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.txtRegistro.Size = new System.Drawing.Size(514, 366);
-            this.txtRegistro.TabIndex = 0;
+            this.txtRegistro.TabIndex = 10;
             this.txtRegistro.Text = "";
             // 
             // groupBox3
@@ -230,7 +212,7 @@
             this.btnSair.Location = new System.Drawing.Point(9, 131);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(213, 50);
-            this.btnSair.TabIndex = 2;
+            this.btnSair.TabIndex = 9;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -244,7 +226,7 @@
             this.btnLimpar.Location = new System.Drawing.Point(9, 75);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(213, 50);
-            this.btnLimpar.TabIndex = 1;
+            this.btnLimpar.TabIndex = 8;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpar.UseVisualStyleBackColor = true;
@@ -257,11 +239,31 @@
             this.btnCadastrar.Location = new System.Drawing.Point(9, 19);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(213, 50);
-            this.btnCadastrar.TabIndex = 0;
+            this.btnCadastrar.TabIndex = 7;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
+            // 
+            // txtMesesTrabalhados
+            // 
+            this.txtMesesTrabalhados.Location = new System.Drawing.Point(86, 127);
+            this.txtMesesTrabalhados.MaxLength = 2;
+            this.txtMesesTrabalhados.Name = "txtMesesTrabalhados";
+            this.txtMesesTrabalhados.Size = new System.Drawing.Size(136, 20);
+            this.txtMesesTrabalhados.TabIndex = 5;
+            this.txtMesesTrabalhados.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMesesTrabalhados.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
+            // 
+            // txtDiasDeFerias
+            // 
+            this.txtDiasDeFerias.Location = new System.Drawing.Point(86, 163);
+            this.txtDiasDeFerias.MaxLength = 2;
+            this.txtDiasDeFerias.Name = "txtDiasDeFerias";
+            this.txtDiasDeFerias.Size = new System.Drawing.Size(136, 20);
+            this.txtDiasDeFerias.TabIndex = 6;
+            this.txtDiasDeFerias.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDiasDeFerias.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyDown);
             // 
             // frmMain
             // 
@@ -290,9 +292,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtDiasDeFerias;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtMesesTrabalhados;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtBonus;
         private System.Windows.Forms.Label label4;
@@ -308,6 +308,8 @@
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.ComboBox cbSetor;
+        private System.Windows.Forms.TextBox txtDiasDeFerias;
+        private System.Windows.Forms.TextBox txtMesesTrabalhados;
     }
 }
 
